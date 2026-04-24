@@ -3,6 +3,7 @@ import { ArrowRight, Mail } from 'lucide-react';
 import { Link } from 'react-router';
 import { brand, footerColumns } from '../data/siteContent';
 import { ContactDemoDialog } from './ContactDemoDialog';
+import { OllyLogo } from './OllyLogo';
 import { Input } from './ui/input';
 
 export function Footer() {
@@ -15,8 +16,8 @@ export function Footer() {
           <div className="grid md:grid-cols-2 lg:grid-cols-[minmax(0,1fr)_220px_360px] gap-12 mb-16">
           {/* Brand */}
           <div>
-            <div className="mb-4 text-xl tracking-tight">
-              Logo
+            <div className="mb-4">
+              <OllyLogo className="h-7 w-auto text-foreground" />
             </div>
             <p className="text-muted-foreground mb-6 max-w-sm">
               {brand.tagline}
