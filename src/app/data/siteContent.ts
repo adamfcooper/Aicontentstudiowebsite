@@ -1,5 +1,5 @@
 export const brand = {
-  name: 'Catalyst Studio',
+  name: 'Olly',
   email: 'hello@hello.com',
   tagline:
     'AI-powered content creation built for modern brands. Produce more visual content with less cost, less delay, and zero production complexity.',
@@ -275,7 +275,7 @@ export const homePageContent = {
         role: 'Marketing Director',
         company: 'Luxe Fashion Co.',
         content:
-          'Catalyst Studio helped us create an entire seasonal campaign in half the time and a fraction of the cost. The quality is indistinguishable from traditional shoots.',
+          'Olly helped us create an entire seasonal campaign in half the time and a fraction of the cost. The quality is indistinguishable from traditional shoots.',
         rating: 5,
       },
       {
