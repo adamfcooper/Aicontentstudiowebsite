@@ -1,8 +1,14 @@
-import { useState, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router';
-import { Search, Filter, Sparkles, Users, TrendingUp } from 'lucide-react';
+import { Search, Filter, Sparkles, Users } from 'lucide-react';
 import { creators, Creator } from '../data/creators';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { CreatorApplicationDialog } from '../components/CreatorApplicationDialog';
+import { ContactDemoDialog } from '../components/ContactDemoDialog';
+import { Input } from '../components/ui/input';
+
+const CREATOR_ROSTER_PASSWORD = 'roster2026';
+const CREATOR_ROSTER_SESSION_KEY = 'creator-roster-unlocked';
 
 export function CreatorsPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -10,6 +16,11 @@ export function CreatorsPage() {
   const [selectedGender, setSelectedGender] = useState<string>('all');
   const [selectedStyle, setSelectedStyle] = useState<string>('all');
   const [selectedAudienceSize, setSelectedAudienceSize] = useState<string>('all');
+  const [isApplicationOpen, setIsApplicationOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
+  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
 
   const industries = ['all', 'Fashion', 'Automotive', 'Fitness', 'Lifestyle', 'Tech'];
   const genders = ['all', 'Female', 'Male'];
@@ -29,15 +40,34 @@ export function CreatorsPage() {
     });
   }, [searchQuery, selectedIndustry, selectedGender, selectedStyle, selectedAudienceSize]);
 
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    setIsUnlocked(window.sessionStorage.getItem(CREATOR_ROSTER_SESSION_KEY) === 'true');
+  }, []);
+
+  const handleUnlock = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (passwordInput === CREATOR_ROSTER_PASSWORD) {
+      setIsUnlocked(true);
+      setPasswordError('');
+      window.sessionStorage.setItem(CREATOR_ROSTER_SESSION_KEY, 'true');
+      return;
+    }
+
+    setPasswordError('Incorrect password. Please try again or get in touch for access.');
+  };
+
   return (
-    <div className="min-h-screen pt-20">
+    <div className="relative min-h-screen pt-20">
+      <div className={isUnlocked ? '' : 'pointer-events-none select-none blur-md'}>
       {/* Header */}
-      <section className="py-20 bg-gradient-to-b from-violet-500/5 to-background">
+      <section className="py-20 bg-gradient-to-b from-black/5 to-background">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20 mb-6">
-              <Users className="size-4 text-violet-500" />
-              <span className="text-sm text-violet-600 dark:text-violet-400">Talent Database</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-foreground/5 border border-foreground/10 mb-6">
+              <Users className="size-4 text-foreground" />
+              <span className="text-sm text-foreground/70">Talent Database</span>
             </div>
             <h1 className="text-5xl lg:text-6xl mb-6">Explore Our Creators</h1>
             <p className="text-xl text-muted-foreground">
@@ -53,7 +83,7 @@ export function CreatorsPage() {
               placeholder="Search by name, niche, or style..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 rounded-2xl bg-card border border-border focus:outline-none focus:border-violet-500/50 transition-colors"
+              className="w-full pl-12 pr-4 py-4 rounded-2xl bg-card border border-border focus:outline-none focus:border-foreground/25 transition-colors"
             />
           </div>
         </div>
@@ -76,10 +106,10 @@ export function CreatorsPage() {
                   <button
                     key={industry}
                     onClick={() => setSelectedIndustry(industry)}
-                    className={`px-4 py-2 rounded-full border transition-all ${
+                    className={`glass-button px-4 py-2 rounded-full border transition-all ${
                       selectedIndustry === industry
-                        ? 'bg-violet-500 text-white border-violet-500'
-                        : 'bg-card border-border hover:border-violet-500/50'
+                        ? 'bg-black text-white border-black'
+                        : 'bg-card border-border hover:border-foreground/25'
                     }`}
                   >
                     {industry === 'all' ? 'All Industries' : industry}
@@ -96,10 +126,10 @@ export function CreatorsPage() {
                   <button
                     key={gender}
                     onClick={() => setSelectedGender(gender)}
-                    className={`px-4 py-2 rounded-full border transition-all ${
+                    className={`glass-button px-4 py-2 rounded-full border transition-all ${
                       selectedGender === gender
-                        ? 'bg-violet-500 text-white border-violet-500'
-                        : 'bg-card border-border hover:border-violet-500/50'
+                        ? 'bg-black text-white border-black'
+                        : 'bg-card border-border hover:border-foreground/25'
                     }`}
                   >
                     {gender === 'all' ? 'All' : gender}
@@ -116,10 +146,10 @@ export function CreatorsPage() {
                   <button
                     key={style}
                     onClick={() => setSelectedStyle(style)}
-                    className={`px-4 py-2 rounded-full border transition-all ${
+                    className={`glass-button px-4 py-2 rounded-full border transition-all ${
                       selectedStyle === style
-                        ? 'bg-violet-500 text-white border-violet-500'
-                        : 'bg-card border-border hover:border-violet-500/50'
+                        ? 'bg-black text-white border-black'
+                        : 'bg-card border-border hover:border-foreground/25'
                     }`}
                   >
                     {style === 'all' ? 'All Styles' : style}
@@ -136,10 +166,10 @@ export function CreatorsPage() {
                   <button
                     key={size}
                     onClick={() => setSelectedAudienceSize(size)}
-                    className={`px-4 py-2 rounded-full border transition-all ${
+                    className={`glass-button px-4 py-2 rounded-full border transition-all ${
                       selectedAudienceSize === size
-                        ? 'bg-violet-500 text-white border-violet-500'
-                        : 'bg-card border-border hover:border-violet-500/50'
+                        ? 'bg-black text-white border-black'
+                        : 'bg-card border-border hover:border-foreground/25'
                     }`}
                   >
                     {size === 'all' ? 'All Sizes' : size.charAt(0).toUpperCase() + size.slice(1)}
@@ -181,33 +211,54 @@ export function CreatorsPage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="size-16 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center mx-auto mb-4">
-                <Users className="size-8 text-white" />
+          <div className="grid lg:grid-cols-3 gap-12">
+            <div className="relative">
+              <div className="hidden lg:block absolute top-10 left-full w-full h-px bg-gradient-to-r from-foreground/20 to-transparent -z-10" />
+
+              <div className="space-y-3">
+                <div className="flex items-baseline gap-8">
+                  <div className="min-w-[2.75rem] text-[16px] leading-none text-black">
+                    1.
+                  </div>
+                  <h3 className="text-2xl">Select a Creator</h3>
+                </div>
+
+                <p className="ml-[4.75rem] text-muted-foreground leading-relaxed">
+                  Browse our talent database and choose the perfect creator for your brand
+                </p>
               </div>
-              <h3 className="text-xl mb-2">1. Select a Creator</h3>
-              <p className="text-muted-foreground">
-                Browse our talent database and choose the perfect creator for your brand
-              </p>
             </div>
-            <div className="text-center">
-              <div className="size-16 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center mx-auto mb-4">
-                <Sparkles className="size-8 text-white" />
+
+            <div className="relative">
+              <div className="hidden lg:block absolute top-10 left-full w-full h-px bg-gradient-to-r from-foreground/20 to-transparent -z-10" />
+
+              <div className="space-y-3">
+                <div className="flex items-baseline gap-8">
+                  <div className="min-w-[2.75rem] text-[16px] leading-none text-black">
+                    2.
+                  </div>
+                  <h3 className="text-2xl">AI Content Generation</h3>
+                </div>
+
+                <p className="ml-[4.75rem] text-muted-foreground leading-relaxed">
+                  We generate high-quality content using their likeness and AI technology
+                </p>
               </div>
-              <h3 className="text-xl mb-2">2. AI Content Generation</h3>
-              <p className="text-muted-foreground">
-                We generate high-quality content using their likeness and AI technology
-              </p>
             </div>
-            <div className="text-center">
-              <div className="size-16 rounded-2xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="size-8 text-white" />
+
+            <div className="relative">
+              <div className="space-y-3">
+                <div className="flex items-baseline gap-8">
+                  <div className="min-w-[2.75rem] text-[16px] leading-none text-black">
+                    3.
+                  </div>
+                  <h3 className="text-2xl">Deploy &amp; Scale</h3>
+                </div>
+
+                <p className="ml-[4.75rem] text-muted-foreground leading-relaxed">
+                  Receive ready-to-use assets and scale your content across all channels
+                </p>
               </div>
-              <h3 className="text-xl mb-2">3. Deploy & Scale</h3>
-              <p className="text-muted-foreground">
-                Receive ready-to-use assets and scale your content across all channels
-              </p>
             </div>
           </div>
         </div>
@@ -220,16 +271,64 @@ export function CreatorsPage() {
           <p className="text-xl text-muted-foreground mb-8">
             Join our network and monetize your likeness through AI-generated content
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white hover:opacity-90 transition-opacity">
+          <div className="flex justify-center">
+            <button
+              type="button"
+              onClick={() => setIsApplicationOpen(true)}
+              className="glass-button monochrome-button px-8 py-4 rounded-full"
+            >
               Apply as a Creator
-            </button>
-            <button className="px-8 py-4 rounded-xl border border-border hover:bg-accent transition-colors">
-              Learn More
             </button>
           </div>
         </div>
       </section>
+
+      <CreatorApplicationDialog open={isApplicationOpen} onOpenChange={setIsApplicationOpen} />
+      </div>
+
+      {!isUnlocked ? (
+        <div className="absolute inset-0 z-20 flex items-start justify-center px-6 pt-40">
+          <div className="w-full max-w-xl rounded-[2rem] border border-border bg-background/92 p-8 shadow-[0_24px_80px_rgba(0,0,0,0.08)] backdrop-blur-xl">
+            <p className="mb-4 text-sm uppercase tracking-[0.24em] text-foreground/60">Private Access</p>
+            <h1 className="mb-4 text-4xl leading-tight">
+              Please reach out to get access to our full creator roster.
+            </h1>
+            <p className="mb-8 text-lg text-muted-foreground">
+              If you already have the password, enter it below to view the full creator list.
+            </p>
+
+            <form className="space-y-4" onSubmit={handleUnlock}>
+              <Input
+                type="password"
+                value={passwordInput}
+                onChange={(event) => setPasswordInput(event.target.value)}
+                placeholder="Enter password"
+                className="glass-button h-12 rounded-full border-border bg-white px-5"
+              />
+              {passwordError ? (
+                <p className="text-sm text-destructive">{passwordError}</p>
+              ) : null}
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="submit"
+                  className="glass-button monochrome-button rounded-full px-6 py-3"
+                >
+                  Unlock Roster
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsContactOpen(true)}
+                  className="glass-button rounded-full border border-border px-6 py-3 transition-colors hover:bg-accent"
+                >
+                  Get in Touch
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      ) : null}
+
+      <ContactDemoDialog open={isContactOpen} onOpenChange={setIsContactOpen} />
     </div>
   );
 }
@@ -240,7 +339,7 @@ function CreatorCard({ creator }: { creator: Creator }) {
   return (
     <Link
       to={`/creators/${creator.id}`}
-      className="group relative rounded-3xl bg-card border border-border hover:border-violet-500/50 transition-all overflow-hidden"
+      className="group relative rounded-3xl bg-card border border-border hover:border-foreground/25 transition-all overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -273,7 +372,7 @@ function CreatorCard({ creator }: { creator: Creator }) {
         )}
 
         {/* AI-Ready Badge */}
-        <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-violet-500 text-white text-xs flex items-center gap-1">
+        <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-black text-white text-xs flex items-center gap-1">
           <Sparkles className="size-3" />
           AI-Ready
         </div>
@@ -282,7 +381,7 @@ function CreatorCard({ creator }: { creator: Creator }) {
       {/* Card Content */}
       <div className="p-6">
         <h3 className="text-xl mb-1">{creator.name}</h3>
-        <p className="text-sm text-violet-500 mb-3">{creator.niche.join(' • ')}</p>
+        <p className="text-sm text-foreground/70 mb-3">{creator.niche.join(' • ')}</p>
         <p className="text-sm text-muted-foreground mb-4">{creator.descriptor}</p>
 
         <div className="flex items-center justify-between text-sm text-muted-foreground border-t border-border pt-4">
@@ -296,7 +395,7 @@ function CreatorCard({ creator }: { creator: Creator }) {
           </div>
         </div>
 
-        <button className="w-full mt-4 px-4 py-2 rounded-xl bg-secondary text-secondary-foreground group-hover:bg-violet-500 group-hover:text-white transition-colors">
+        <button className="glass-button w-full mt-4 px-4 py-2 rounded-full bg-secondary text-secondary-foreground group-hover:bg-black group-hover:text-white transition-colors">
           View Profile
         </button>
       </div>

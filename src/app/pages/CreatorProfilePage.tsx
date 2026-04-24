@@ -1,18 +1,21 @@
+import { useState } from 'react';
 import { useParams, Link } from 'react-router';
-import { ArrowLeft, MapPin, Users, TrendingUp, Sparkles, CheckCircle, Mail, Calendar } from 'lucide-react';
+import { ArrowLeft, MapPin, Users, TrendingUp, Sparkles } from 'lucide-react';
 import { creators } from '../data/creators';
 import { ImageWithFallback } from '../components/figma/ImageWithFallback';
+import { ContactDemoDialog } from '../components/ContactDemoDialog';
 
 export function CreatorProfilePage() {
   const { id } = useParams();
   const creator = creators.find((c) => c.id === id);
+  const [isContactOpen, setIsContactOpen] = useState(false);
 
   if (!creator) {
     return (
       <div className="min-h-screen pt-20 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-3xl mb-4">Creator Not Found</h1>
-          <Link to="/creators" className="text-violet-500 hover:underline">
+          <Link to="/creators" className="text-foreground hover:underline">
             Back to Creators
           </Link>
         </div>
@@ -45,7 +48,7 @@ export function CreatorProfilePage() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute top-6 right-6 px-4 py-2 rounded-full bg-violet-500 text-white flex items-center gap-2">
+            <div className="absolute top-6 right-6 px-4 py-2 rounded-full bg-black text-white flex items-center gap-2">
               <Sparkles className="size-4" />
               AI-Enhanced
             </div>
@@ -56,7 +59,7 @@ export function CreatorProfilePage() {
             <div>
               <div className="flex flex-wrap gap-2 mb-4">
                 {creator.niche.map((n) => (
-                  <span key={n} className="px-3 py-1 rounded-full bg-violet-500/10 text-violet-600 dark:text-violet-400 text-sm">
+                  <span key={n} className="px-3 py-1 rounded-full bg-foreground/5 text-foreground/70 text-sm">
                     {n}
                   </span>
                 ))}
@@ -107,26 +110,24 @@ export function CreatorProfilePage() {
             </div>
 
             {/* Content Style Tags */}
-            <div>
-              <h3 className="text-xl mb-3">Content Style</h3>
-              <div className="flex flex-wrap gap-2">
-                {creator.contentStyle.map((style) => (
-                  <span key={style} className="px-4 py-2 rounded-full border border-border bg-card">
-                    {style}
-                  </span>
-                ))}
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h3 className="text-xl mb-3">Content Style</h3>
+                <div className="flex flex-wrap gap-2">
+                  {creator.contentStyle.map((style) => (
+                    <span key={style} className="px-4 py-2 rounded-full border border-border bg-card">
+                      {style}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="flex-1 px-6 py-4 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
-                <Calendar className="size-5" />
-                Request Content
-              </button>
-              <button className="flex-1 px-6 py-4 rounded-xl border border-border hover:bg-accent transition-colors flex items-center justify-center gap-2">
-                <Mail className="size-5" />
-                Contact
+              <button
+                type="button"
+                onClick={() => setIsContactOpen(true)}
+                className="glass-button monochrome-button px-6 py-4 rounded-full"
+              >
+                Work with Creator
               </button>
             </div>
           </div>
@@ -152,31 +153,6 @@ export function CreatorProfilePage() {
         </p>
       </section>
 
-      {/* AI Capabilities */}
-      <section className="max-w-7xl mx-auto px-6 py-16 bg-muted/30 rounded-3xl my-16">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20 mb-4">
-              <Sparkles className="size-4 text-violet-500" />
-              <span className="text-sm text-violet-600 dark:text-violet-400">AI-Powered Capabilities</span>
-            </div>
-            <h2 className="text-3xl mb-4">What You Can Create</h2>
-            <p className="text-muted-foreground">
-              Leverage AI technology to generate unlimited content variations with {creator.name}
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {creator.aiCapabilities.map((capability, idx) => (
-              <div key={idx} className="flex items-start gap-4 p-6 rounded-2xl bg-card border border-border">
-                <CheckCircle className="size-6 text-violet-500 flex-shrink-0 mt-0.5" />
-                <p className="text-lg">{capability}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Past Collaborations */}
       <section className="max-w-7xl mx-auto px-6 py-16">
         <h2 className="text-3xl mb-8">Past Brand Collaborations</h2>
@@ -189,32 +165,14 @@ export function CreatorProfilePage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="relative overflow-hidden rounded-3xl">
-          <div className="absolute inset-0 bg-gradient-to-br from-violet-500 via-fuchsia-500 to-violet-600" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:24px_24px]" />
-
-          <div className="relative px-8 py-16 lg:py-24 text-center">
-            <h2 className="text-4xl lg:text-5xl text-white mb-6">
-              Ready to create with {creator.name.split(' ')[0]}?
-            </h2>
-            <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
-              Book a consultation and we'll show you exactly how AI-powered content can transform your campaigns.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 rounded-xl bg-white text-violet-600 hover:bg-white/90 transition-all flex items-center justify-center gap-2 shadow-xl">
-                <Calendar className="size-5" />
-                Book Campaign
-              </button>
-              <button className="px-8 py-4 rounded-xl border-2 border-white text-white hover:bg-white/10 transition-all">
-                View All Creators
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ContactDemoDialog
+        open={isContactOpen}
+        onOpenChange={setIsContactOpen}
+        title="Work with Creator"
+        description="Tell us about your brand and project and we'll put together the right creator-led brief."
+        submitLabel="Send Enquiry"
+        subject={creator.name}
+      />
     </div>
   );
 }

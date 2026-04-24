@@ -1,25 +1,27 @@
+import { useState } from 'react';
 import { Hero } from '../components/Hero';
 import { HowItWorks } from '../components/HowItWorks';
 import { Services } from '../components/Services';
-import { UseCases } from '../components/UseCases';
 import { Benefits } from '../components/Benefits';
 import { CreatorSection } from '../components/CreatorSection';
-import { SocialProof } from '../components/SocialProof';
-import { Pricing } from '../components/Pricing';
 import { FinalCTA } from '../components/FinalCTA';
+import { ContactDemoDialog } from '../components/ContactDemoDialog';
+import { CreatorApplicationDialog } from '../components/CreatorApplicationDialog';
 
 export function HomePage() {
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isCreatorApplicationOpen, setIsCreatorApplicationOpen] = useState(false);
+
   return (
     <>
-      <Hero />
+      <Hero onBookDemo={() => setIsContactOpen(true)} />
       <HowItWorks />
       <Services />
-      <UseCases />
-      <Benefits />
-      <CreatorSection />
-      <SocialProof />
-      <Pricing />
-      <FinalCTA />
+      <Benefits onGetInTouch={() => setIsContactOpen(true)} />
+      <CreatorSection onApplyAsCreator={() => setIsCreatorApplicationOpen(true)} />
+      <FinalCTA onBookDemo={() => setIsContactOpen(true)} />
+      <ContactDemoDialog open={isContactOpen} onOpenChange={setIsContactOpen} />
+      <CreatorApplicationDialog open={isCreatorApplicationOpen} onOpenChange={setIsCreatorApplicationOpen} />
     </>
   );
 }
