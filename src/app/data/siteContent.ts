@@ -2,7 +2,7 @@ export const brand = {
   name: 'Catalyst Studio',
   email: 'hello@hello.com',
   tagline:
-    'AI-powered content creation meets real human talent. Transform your visual content production without the complexity.',
+    'AI-powered content creation built for modern brands. Produce more visual content with less cost, less delay, and zero production complexity.',
 };
 
 export const navigationItems = [
@@ -33,15 +33,15 @@ export const socialLinks = [
 export const homePageContent = {
   hero: {
     badge: 'AI-Powered Content Studio',
-    title: 'Create stunning content without the shoot',
+    title: 'Create premium content without the shoot',
     description:
-      'We combine AI technology with real creators to produce high-performing visual content faster, smarter, and without traditional production costs.',
+      'We help modern brands produce campaign visuals, social content, and ad creatives faster using AI production and real creators.',
     primaryCta: { label: 'Book a Demo', href: '/#cta' },
     secondaryCta: { label: 'Browse Creators', href: '/creators' },
     stats: [
-      { value: '10x', label: 'Faster Production' },
-      { value: '70%', label: 'Cost Savings' },
-      { value: '500+', label: 'Brands Trust Us' },
+      { value: '10x', label: 'Faster Turnaround' },
+      { value: '70%', label: 'Lower Production Costs' },
+      { value: 'Unlimited', label: 'Content Scale' },
     ],
     images: [
       {
@@ -68,66 +68,68 @@ export const homePageContent = {
   },
   howItWorks: {
     id: 'work',
-    eyebrow: 'Process',
+    eyebrow: 'PROCESS',
     title: 'How It Works',
-    description: 'Three simple steps to transform your content creation process',
+    description: 'Three simple steps to modernise your content production.',
     steps: [
       {
         icon: 'users',
         number: '01',
-        title: 'Partner with Creators',
+        title: 'Choose Your Content Model',
         description:
-          'We work with real creators or leverage AI workflows tailored to your brand needs.',
+          'Use AI production, real creators, or a hybrid approach tailored to your brand.',
       },
       {
         icon: 'sparkles',
         number: '02',
-        title: 'Generate High-Quality Content',
+        title: 'We Create Your Assets',
         description:
-          'Our AI technology produces studio-quality visuals without traditional photoshoots.',
+          'Receive premium visuals for ads, ecommerce, launches, and social media.',
       },
       {
         icon: 'rocket',
         number: '03',
-        title: 'Receive Ready Assets',
+        title: 'Launch Faster',
         description:
-          'Get campaign-ready content for ads, social media, and marketing delivered fast.',
+          'Ready-to-use content delivered in days, not weeks.',
       },
     ],
   },
   services: {
     id: 'services',
-    eyebrow: 'Offerings',
+    eyebrow: 'OFFERINGS',
     title: 'Our Services',
     description:
-      'Two powerful offerings to scale your visual content production.',
+      'Flexible solutions built for brands that need more content with less friction.',
     items: [
       {
         icon: 'wand2',
-        title: 'AI Content Studio',
+        title: 'AI Content Production',
         description:
-          'Scalable, high-quality visual content without traditional shoots.',
+          'High-quality visual content created without traditional shoots.',
         accent: 'violet',
         cta: { label: 'Learn More', href: '/#cta' },
         features: [
-          { icon: 'image', text: 'Product imagery and lifestyle shots' },
-          { icon: 'share2', text: 'Social media content optimized for engagement' },
-          { icon: 'zap', text: 'Ad creatives that convert' },
-          { icon: 'trendingUp', text: 'No photoshoots and no production delays' },
+          { icon: 'image', text: 'Product imagery' },
+          { icon: 'share2', text: 'Lifestyle visuals' },
+          { icon: 'zap', text: 'Paid ad creatives' },
+          { icon: 'trendingUp', text: 'Fast monthly output' },
+          { icon: 'clock', text: 'No production delays' },
         ],
       },
       {
         icon: 'userCheck',
-        title: 'Talent & Creator Layer',
+        title: 'Creator Network',
         description:
-          'Real creators, amplified with AI for unlimited scalability.',
+          'Real creators, scaled with AI for faster and more flexible campaigns.',
         accent: 'fuchsia',
-        cta: { label: 'Explore the Creator Model', href: '/#creators' },
+        cta: { label: 'Explore Creators', href: '/creators' },
         features: [
-          { icon: 'image', text: 'Work with authentic creators' },
-          { icon: 'share2', text: 'AI-enhanced influencer content' },
-          { icon: 'zap', text: 'Scalable UGC-style visuals' },
-          { icon: 'trendingUp', text: 'Digital likeness technology' },
+          { icon: 'image', text: 'Authentic creator campaigns' },
+          { icon: 'share2', text: 'AI-enhanced UGC' },
+          { icon: 'zap', text: 'Scalable creator output' },
+          { icon: 'trendingUp', text: 'Digital likeness licensing' },
+          { icon: 'clock', text: 'Faster approvals' },
         ],
       },
     ],
@@ -173,7 +175,7 @@ export const homePageContent = {
     id: 'about',
     eyebrow: 'Benefits',
     title:
-      'Why brands choose us: lower costs, faster turnaround, scalable output, consistent branding, and no production hassle.',
+      `Why brands switch to ${brand.name}: lower production costs, faster turnaround, scalable output, consistent branding, and zero shoot-day hassle.`,
     description:
       "Transform your content creation with benefits that traditional production can't match.",
     items: [
@@ -215,26 +217,27 @@ export const homePageContent = {
   creators: {
     id: 'creators',
     badge: 'For Creators & Influencers',
-    title: 'Real Creators, Scaled with AI',
+    title: 'Real Creators. Infinite Output.',
     description:
-      'Join our network of creators and monetize your likeness through AI-generated content while maintaining full creative control.',
+      'Partner with creators who monetise their likeness through AI-generated content while maintaining full creative control.',
     primaryCta: { label: 'Browse Creators', href: '/creators' },
     secondaryCta: { label: 'Apply as a Creator', href: `mailto:${brand.email}` },
     items: [
       {
         title: 'Earn passive income from your digital likeness',
-        description:
-          'Get compensated every time your AI-generated content is used.',
+        description: '',
       },
       {
-        title: 'Maintain creative control and approval rights',
-        description:
-          'You decide how your likeness is used and which brands you work with.',
+        title: 'Approve every campaign before content goes live',
+        description: '',
       },
       {
-        title: 'Scale your content without the grind',
-        description:
-          'One shoot becomes hundreds of variations, so you can work smarter, not harder.',
+        title: 'Work with brands that match your style',
+        description: '',
+      },
+      {
+        title: 'Scale your content opportunities without constant shooting',
+        description: '',
       },
     ],
     images: [
@@ -356,9 +359,9 @@ export const homePageContent = {
   },
   finalCta: {
     id: 'cta',
-    title: 'Start creating content without the shoot',
+    title: 'Ready to scale content without scaling costs?',
     description:
-      'Join hundreds of brands transforming their content creation with AI. Book a demo and see the difference.',
+      'Join brands replacing expensive production with faster, smarter content creation.',
     primaryCta: { label: 'Book a Demo', href: `mailto:${brand.email}` },
     secondaryCta: { label: 'View Sample Work', href: '/our-work' },
     note:

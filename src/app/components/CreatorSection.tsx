@@ -28,7 +28,9 @@ export function CreatorSection({ onApplyAsCreator }: CreatorSectionProps) {
                   <CheckCircle className="size-6 text-foreground mt-0.5 flex-shrink-0" />
                   <div>
                     <div className="mb-1">{item.title}</div>
-                    <div className="text-sm text-muted-foreground">{item.description}</div>
+                    {item.description ? (
+                      <div className="text-sm text-muted-foreground">{item.description}</div>
+                    ) : null}
                   </div>
                 </li>
               ))}
