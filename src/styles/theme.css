@@ -121,6 +121,17 @@
 }
 
 @layer components {
+  @keyframes hero-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
   .glass-button {
     position: relative;
     isolation: isolate;
@@ -148,6 +159,26 @@
 
   .monochrome-button:hover {
     background-image: linear-gradient(to right, #4a4a4a, #1d1d1d);
+  }
+
+  .hero-float {
+    animation: hero-float 6s ease-in-out infinite;
+  }
+
+  .hero-float-delay-1 {
+    animation-delay: 0s;
+  }
+
+  .hero-float-delay-2 {
+    animation-delay: 1.2s;
+  }
+
+  .hero-float-delay-3 {
+    animation-delay: 2.1s;
+  }
+
+  .hero-float-delay-4 {
+    animation-delay: 3s;
   }
 }
 

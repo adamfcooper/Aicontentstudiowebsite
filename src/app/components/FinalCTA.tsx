@@ -13,7 +13,7 @@ export function FinalCTA({ onBookDemo }: FinalCTAProps) {
     <section id={finalCta.id} className="py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="relative overflow-hidden rounded-3xl">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-neutral-900 to-neutral-700" />
+          <div className="absolute inset-0 bg-black" />
 
           <div className="relative px-8 py-20 lg:py-32 text-center">
             <h2 className="text-4xl lg:text-6xl text-white mb-6 max-w-3xl mx-auto">

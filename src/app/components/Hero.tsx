@@ -9,6 +9,12 @@ type HeroProps = {
 
 export function Hero({ onBookDemo }: HeroProps) {
   const { hero } = homePageContent;
+  const heroImageClasses = [
+    'hero-float hero-float-delay-1 z-20',
+    'hero-float hero-float-delay-2 z-10',
+    'hero-float hero-float-delay-3 z-10',
+    'hero-float hero-float-delay-4 z-10',
+  ];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
@@ -51,8 +57,8 @@ export function Hero({ onBookDemo }: HeroProps) {
         </div>
 
         <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-tr from-black to-neutral-700 rounded-3xl blur-3xl opacity-15" />
-          <div className="relative grid grid-cols-2 gap-4">
+          <div className="absolute inset-0 rounded-3xl bg-black blur-3xl opacity-15" />
+          <div className="relative grid grid-cols-2 gap-4 lg:hidden">
             <div className="space-y-4">
               {hero.images.slice(0, 2).map((image) => (
                 <ImageWithFallback
@@ -71,6 +77,45 @@ export function Hero({ onBookDemo }: HeroProps) {
                   alt={image.alt}
                   className={image.className}
                 />
+              ))}
+            </div>
+          </div>
+
+          <div className="relative hidden grid-cols-2 gap-4 overflow-visible lg:grid">
+            <div className="space-y-4">
+              {hero.images.slice(0, 2).map((image, index) => (
+                <div
+                  key={image.src}
+                  className={`relative ${heroImageClasses[index]}`}
+                >
+                  <div
+                    className={`origin-center transition-transform duration-700 ease-out will-change-transform hover:scale-[1.18] hover:z-30 ${
+                      index === 0 ? 'scale-[1.2]' : ''
+                    }`}
+                  >
+                    <ImageWithFallback
+                      src={image.src}
+                      alt={image.alt}
+                      className={image.className}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="space-y-4 pt-8">
+              {hero.images.slice(2).map((image, index) => (
+                <div
+                  key={image.src}
+                  className={`relative ${heroImageClasses[index + 2]}`}
+                >
+                  <div className="origin-center transition-transform duration-700 ease-out will-change-transform hover:scale-[1.18] hover:z-30">
+                    <ImageWithFallback
+                      src={image.src}
+                      alt={image.alt}
+                      className={image.className}
+                    />
+                  </div>
+                </div>
               ))}
             </div>
           </div>

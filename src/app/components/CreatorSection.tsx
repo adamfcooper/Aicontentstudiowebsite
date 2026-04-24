@@ -52,7 +52,7 @@ export function CreatorSection({ onApplyAsCreator }: CreatorSectionProps) {
           </div>
 
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-black to-neutral-700 rounded-3xl blur-3xl opacity-15" />
+            <div className="absolute inset-0 rounded-3xl bg-black blur-3xl opacity-15" />
             <div className="relative grid grid-cols-2 gap-4">
               {creators.images.map((image) => (
                 <ImageWithFallback

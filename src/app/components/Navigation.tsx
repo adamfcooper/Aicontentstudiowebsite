@@ -103,11 +103,9 @@ export function Navigation() {
               </span>
             </Link>
 
-            {!isScrolled ? (
-              <Link to="/" aria-label="Logo" className="text-black md:hidden">
-                <OllyLogo className="h-6 w-auto" />
-              </Link>
-            ) : null}
+            <Link to="/" aria-label="Logo" className="text-black md:hidden">
+              {isScrolled ? <OllyMark className="h-7 w-7" /> : <OllyLogo className="h-6 w-auto" />}
+            </Link>
 
             <div className="hidden md:flex md:flex-1 md:items-center md:justify-between">
               <div className="flex items-center gap-3 text-white">
@@ -145,14 +143,15 @@ export function Navigation() {
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2"
+              className="rounded-xl border border-black/15 bg-white/90 p-2 text-black shadow-sm backdrop-blur-sm md:hidden"
             >
               {isOpen ? <X className="size-6" /> : <Menu className="size-6" />}
             </button>
           </div>
 
           {isOpen && (
-            <div className="md:hidden pt-4 pb-2 flex flex-col gap-4">
+            <div className="mt-3 rounded-3xl border border-black/10 bg-white px-6 py-6 shadow-xl md:hidden">
+              <div className="flex flex-col gap-4">
               {navigationItems.map((item) => (
                 <Link
                   key={item.label}
@@ -168,7 +167,7 @@ export function Navigation() {
               ))}
               <button
                 type="button"
-                className="glass-button monochrome-button px-6 py-2.5 rounded-full text-left"
+                className="glass-button monochrome-button mt-2 px-6 py-3 rounded-full text-left"
                 onClick={() => {
                   setIsOpen(false);
                   setIsContactOpen(true);
@@ -176,6 +175,7 @@ export function Navigation() {
               >
                 Book a Demo
               </button>
+              </div>
             </div>
           )}
         </div>

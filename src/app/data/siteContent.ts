@@ -1,3 +1,10 @@
+import corosHero1 from '../../assets/hero/coros-hero-1.jpg';
+import corosHero2 from '../../assets/hero/coros-hero-2.jpg';
+import corosCreator1 from '../../assets/hero/coros-creator-1.jpg';
+import corosCreator2 from '../../assets/hero/coros-creator-2.jpg';
+import raceServiceHero1 from '../../assets/hero/raceservice-hero-1.jpg';
+import raceServiceHero2 from '../../assets/hero/raceservice-hero-2.jpg';
+
 export const brand = {
   name: 'Olly',
   email: 'hello@hello.com',
@@ -45,24 +52,24 @@ export const homePageContent = {
     ],
     images: [
       {
-        src: 'https://images.unsplash.com/photo-1768818504222-00858f3e0eb8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBmYXNoaW9uJTIwc3R1ZGlvJTIwcGhvdG9ncmFwaHklMjBtb2RlbHxlbnwxfHx8fDE3NzY5NTI0OTV8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Fashion model studio photography',
-        className: 'w-full h-64 object-cover rounded-2xl',
+        src: corosHero1,
+        alt: 'Athlete holding performance product close-up',
+        className: 'w-full h-80 object-cover rounded-2xl lg:h-[25rem]',
       },
       {
-        src: 'https://images.unsplash.com/photo-1634725110352-d76625c7572a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBjYXIlMjBhdXRvbW90aXZlJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzc2OTUyNDk2fDA&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Luxury automotive photography',
-        className: 'w-full h-48 object-cover rounded-2xl',
+        src: raceServiceHero1,
+        alt: 'Model in Race Service shirt under blue sky',
+        className: 'w-full h-72 object-cover rounded-2xl lg:h-[19rem]',
       },
       {
-        src: 'https://images.unsplash.com/photo-1742540425845-8d8dabe893ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBmYXNoaW9uJTIwc3R1ZGlvJTIwcGhvdG9ncmFwaHklMjBtb2RlbHxlbnwxfHx8fDE3NzY5NTI0OTV8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Creative model photography',
-        className: 'w-full h-48 object-cover rounded-2xl',
+        src: corosHero2,
+        alt: 'Runner silhouette at sunset with Coros branding',
+        className: 'w-full h-72 object-cover rounded-2xl lg:h-[19rem]',
       },
       {
-        src: 'https://images.unsplash.com/photo-1612066149888-efcde7d17c25?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxsdXh1cnklMjBjYXIlMjBhdXRvbW90aXZlJTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzc2OTUyNDk2fDA&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Ferrari automotive photography',
-        className: 'w-full h-64 object-cover rounded-2xl',
+        src: raceServiceHero2,
+        alt: 'Model beside blue pickup truck in outdoor setting',
+        className: 'w-full h-80 object-cover rounded-2xl lg:h-[25rem]',
       },
     ],
   },
@@ -242,24 +249,24 @@ export const homePageContent = {
     ],
     images: [
       {
-        src: 'https://images.unsplash.com/photo-1758876202699-abeb827f35b8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMHByb2Zlc3Npb25hbCUyMHdvcmtzcGFjZSUyMG1vZGVybnxlbnwxfHx8fDE3NzY5NTI0OTZ8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Creative professional',
-        className: 'w-full h-64 object-cover rounded-2xl',
+        src: raceServiceHero1,
+        alt: 'Race Service portrait under blue sky',
+        className: 'w-full h-80 object-cover rounded-2xl lg:h-[22rem]',
       },
       {
-        src: 'https://images.unsplash.com/photo-1758876202124-cc941ebb8446?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxjcmVhdGl2ZSUyMHByb2Zlc3Npb25hbCUyMHdvcmtzcGFjZSUyMG1vZGVybnxlbnwxfHx8fDE3NzY5NTI0OTZ8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Professional workspace',
-        className: 'w-full h-64 object-cover rounded-2xl',
+        src: corosCreator1,
+        alt: 'Close-up portrait of athlete in mountain setting',
+        className: 'w-full h-80 object-cover rounded-2xl lg:h-[22rem]',
       },
       {
-        src: 'https://images.unsplash.com/photo-1758613654707-8bdab92f711d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjBmYXNoaW9uJTIwc3R1ZGlvJTIwcGhvdG9ncmFwaHklMjBtb2RlbHxlbnwxfHx8fDE3NzY5NTI0OTV8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Studio photography',
-        className: 'w-full h-64 object-cover rounded-2xl',
+        src: corosCreator2,
+        alt: 'Trail running detail shot with movement',
+        className: 'w-full h-80 object-cover rounded-2xl lg:h-[22rem]',
       },
       {
-        src: 'https://images.unsplash.com/photo-1764016888054-d8d3b8d66945?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHw1fHxtb2Rlcm4lMjBmYXNoaW9uJTIwc3R1ZGlvJTIwcGhvdG9ncmFwaHklMjBtb2RlbHxlbnwxfHx8fDE3NzY5NTI0OTV8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        alt: 'Model photography',
-        className: 'w-full h-64 object-cover rounded-2xl',
+        src: corosHero2,
+        alt: 'Runner silhouette at golden hour',
+        className: 'w-full h-80 object-cover rounded-2xl lg:h-[22rem]',
       },
     ],
   },
