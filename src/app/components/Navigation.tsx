@@ -73,7 +73,7 @@ export function Navigation() {
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       >
         <div className="mx-auto max-w-none px-4 py-4 lg:px-5">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between md:relative md:rounded-full md:border md:border-black/10 md:bg-white/70 md:px-4 md:py-3 md:backdrop-blur-md">
             <Link
               to="/"
               aria-label="Logo"
@@ -111,7 +111,7 @@ export function Navigation() {
 
             <div className="hidden md:flex md:flex-1 md:items-center md:justify-between">
               <div className="flex items-center gap-3 text-white">
-                <div className="flex items-center rounded-full px-3 py-2">
+                <div className="flex items-center rounded-full px-2 py-1">
                   {navigationItems.map((item, index) => (
                     <Link
                       key={item.label}
