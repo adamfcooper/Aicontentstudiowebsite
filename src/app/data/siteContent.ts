@@ -106,7 +106,7 @@ export const homePageContent = {
         icon: 'wand2',
         title: 'AI Content Production',
         description:
-          'High-quality visual content created without traditional shoots.',
+          'High-quality visual content created without the complexities of traditional shoots.',
         accent: 'violet',
         cta: { label: 'Learn More', href: '/#cta' },
         features: [
